@@ -10,13 +10,21 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 
+/**
+ * Console command.
+ */
 class Command extends BaseCommand {
 	private $callback;
 	private $callbackParams;
 	private $argnames;
 	private $optnames;
 
-
+	/**
+	 * Constructor.
+	 *
+	 * @param string $pattern Matched route pattern
+	 * @param mixed  $to      Callback that returns the response when matched
+	 */
 	public function __construct($pattern, $to) {
 		$this->callback = $to;
 		$this->callbackParams = array();
@@ -72,6 +80,9 @@ class Command extends BaseCommand {
 		parent::__construct($name);
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	protected function configure() {
 		$definition = new InputDefinition();
 
@@ -131,6 +142,9 @@ class Command extends BaseCommand {
 		$this->setDefinition($definition);
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	protected function execute(InputInterface $input, OutputInterface $output) {
 		$arguments = $input->getArguments();
 

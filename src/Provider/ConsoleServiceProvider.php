@@ -12,8 +12,14 @@ use Symfony\Component\Console\Output\ConsoleOutput;
 use Symfony\Component\HttpFoundation\Response;
 
 
+/**
+ * Console provider
+ */
 class ConsoleServiceProvider implements ServiceProviderInterface {
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function register(Application $app) {
 		$app['console'] = $app->share(function(Application $app) {
 			return new Console($app);
@@ -30,6 +36,9 @@ class ConsoleServiceProvider implements ServiceProviderInterface {
 		$app['console.status'] = 0;
 	}
 
+	/**
+	 * {@inheritdoc}
+	 */
 	public function boot(Application $app) {
 		if(php_sapi_name() == 'cli') {
 			//replace default exception handler
