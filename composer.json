@@ -1,4 +1,8 @@
 {
+	"name": "rmlasseter/silex-cli",
+	"description": "A console provider for the Silex micro-framework",
+	"keywords": ["silex","console","cli"],
+	"license": "MIT",
 	"require": {
 		"silex/silex": "~1.0",
 		"symfony/console": "~2.0"
